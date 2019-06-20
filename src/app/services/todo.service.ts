@@ -8,5 +8,7 @@ export class TodoService {
 
   constructor(private http: HttpClient) {}
 
-  getTodos() {}
+  getTodos() {
+    return [{ id: 1, title: "Todo One", conmpleted: true }];
+  }
 }
