@@ -1,14 +1,19 @@
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+
+import { Todo } from "../models/Todo";
+
 @Injectable({
   providedIn: "root"
 })
 export class TodoService {
-  todosUrl: "";
+  todosUrl: string =
+    "https://my-json-server.typicode.com/Madz96/angular-crash-todolist/todos";
 
   constructor(private http: HttpClient) {}
 
-  getTodos() {
-    return [{ id: 1, title: "Todo One", conmpleted: true }];
+  getTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(this.todosUrl);
   }
 }
